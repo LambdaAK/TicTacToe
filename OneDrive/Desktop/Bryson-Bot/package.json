@@ -1,0 +1,24 @@
+{
+  "name": "bryson-bot",
+  "version": "0.0.1",
+  "description": "A minecraft bot developed by Bryson Computing",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonZavialov/BrysonBot.git"
+  },
+  "author": "Bryson Computing",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonZavialov/BrysonBot/issues"
+  },
+  "homepage": "https://github.com/JonZavialov/BrysonBot#readme",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "mineflayer": "^3.6.0",
+    "mineflayer-pathfinder": "^1.6.1"
+  }
+}
