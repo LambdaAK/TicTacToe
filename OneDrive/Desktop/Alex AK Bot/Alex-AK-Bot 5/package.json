@@ -1,0 +1,44 @@
+{
+  "name": "bryson-bot",
+  "version": "12.0.0",
+  "description": "bryson bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bryson",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/collection": "^0.1.6",
+    "discord-buttons": "^3.2.1",
+    "discord-tts": "^1.0.3",
+    "discord-ytdl-core": "^5.0.2",
+    "discord.js": "^12.5.1",
+    "discordjs-ytdl": "^2.2.0",
+    "dotenv": "^8.2.0",
+    "fs": "0.0.1-security",
+    "image-search-google": "^1.3.0",
+    "meme-api": "^1.0.0",
+    "node-fetch": "^2.6.1",
+    "node-localstorage": "^2.1.6",
+    "node-opus": "^0.3.3",
+    "opusscript": "0.0.7",
+    "path": "^0.12.7",
+    "periodic-table": "^0.0.8",
+    "pkg": "^5.1.0",
+    "readline": "^1.3.0",
+    "regex": "^0.1.1",
+    "setimmediate": "^1.0.5",
+    "tenorjs": "^1.0.7",
+    "tsc": "^1.20150623.0",
+    "typescript": "^4.3.4",
+    "youtube-dl": "^3.1.0",
+    "youtube-search": "^1.1.6",
+    "ytdl-core": "^4.8.2",
+    "ytdl-core-discord": "^1.2.5"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
+  }
+}
