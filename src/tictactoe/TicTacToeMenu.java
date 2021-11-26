@@ -1,0 +1,34 @@
+package tictactoe;
+
+import javax.swing.JOptionPane;
+
+public class TicTacToeMenu {
+ 
+    public void play() {
+        Object[] options = {"Single Player", "Two Player", "Quit"};
+
+        while (true) {
+            int choice = JOptionPane.showOptionDialog(null, "Tic Tac Toe\n\n"
+                    + "Select Gamemode", "Tic Tac Toe",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                    null, options, options[0]);
+                    
+            if (choice == 0) {
+                TicTacToeGameSinglePlayer game = new TicTacToeGameSinglePlayer();
+                game.play();
+            } 
+
+            else if (choice == 1) {
+                TicTacToeGameTwoPlayer game = new TicTacToeGameTwoPlayer();
+                game.play();
+            } 
+
+            else return;  
+        }
+        
+
+        
+    }
+    
+    
+}
