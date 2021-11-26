@@ -4,13 +4,11 @@ import javax.swing.JOptionPane;
 
 public class CPU {
     private int move;
-    private int turn;
     private int difficulty;
     TicTacToeGameSinglePlayer game;
 
     public CPU(TicTacToeGameSinglePlayer game, int difficulty) {
         this.game = game;
-        this.turn = game.turn;
         this.difficulty = difficulty;
     }
 
@@ -227,7 +225,7 @@ public class CPU {
             */
             String[][] board = game.board; // create an alias for more readable code
 
-            if (turn == 1) {
+            if (game.getTurn() == 1) {
                 if (board[1][1].equals("?")) {
                     move = coordinatesToNumber(1, 1);
                 }
@@ -262,5 +260,6 @@ public class CPU {
         if (!game.board[col][row].equals("X") && !game.board[col][row].equals("O")) return true;
         else return false;
     }
+
     
 }

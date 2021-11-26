@@ -211,4 +211,8 @@ public class TicTacToeGameTwoPlayer {
         else
             return (slot1.equals(slot2) && slot2.equals(slot3));
     }
+
+    public int getTurn() {
+        return turn;
+    }
 }
