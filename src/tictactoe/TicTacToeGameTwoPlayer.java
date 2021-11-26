@@ -45,13 +45,13 @@ xxx
  */
 public class TicTacToeGameTwoPlayer {
    
-    private String[][] board = {{"?", "?", "?"}, {"?", "?", "?"}, {"?", "?", "?"}};
-    private JOptionPane pane;
-    private int turn;
-    private int move;
-    private boolean playerOneWin;
-    private boolean playerTwoWin;
-    private boolean finished;
+    protected String[][] board = {{"?", "?", "?"}, {"?", "?", "?"}, {"?", "?", "?"}};
+    protected JOptionPane pane;
+    protected int turn;
+    protected int move;
+    protected boolean playerOneWin;
+    protected boolean playerTwoWin;
+    protected boolean finished;
    
    
     public TicTacToeGameTwoPlayer() {
@@ -76,9 +76,9 @@ public class TicTacToeGameTwoPlayer {
    
     private void displayEndGame() {
         // displays who won, or die
-        if (playerOneWin) pane.showMessageDialog(null, "Player 1 wins!\n\n" + stringBoard());
-        else if (playerTwoWin) pane.showMessageDialog(null, "Player 2 wins!\n\n" + stringBoard());
-        else pane.showMessageDialog(null, "Tie!\n\n" + stringBoard());
+        if (playerOneWin) JOptionPane.showMessageDialog(null, "Player 1 wins!\n\n" + stringBoard());
+        else if (playerTwoWin) JOptionPane.showMessageDialog(null, "Player 2 wins!\n\n" + stringBoard());
+        else JOptionPane.showMessageDialog(null, "Tie!\n\n" + stringBoard());
     }
    
    
@@ -152,7 +152,7 @@ public class TicTacToeGameTwoPlayer {
        
     }
    
-    private void update() {
+    protected void update() {
         // adds the player's move to board
         int row = move / 3;
         int col = move % 3;
@@ -164,7 +164,7 @@ public class TicTacToeGameTwoPlayer {
         board[row][col] = player;
     }
    
-    private String stringBoard() {
+    protected String stringBoard() {
         String boardStr = "   1 2 3\n";
         for (int i = 0; i < board.length; i++) {
             boardStr += i + 1 + " ";
@@ -177,7 +177,7 @@ public class TicTacToeGameTwoPlayer {
         return boardStr;
     }
    
-    private boolean isValidMove(int move) {
+    protected boolean isValidMove(int move) {
         int row = move % 3;
         int col = move / 3;
        
@@ -194,7 +194,7 @@ public class TicTacToeGameTwoPlayer {
            if (turn % 2 == 0) prompt += ", Player 1 (X)";
            else prompt += ", Player 2 (O)";
            
-        move = pane.showOptionDialog(null, stringBoard() + prompt, "Tic-Tac-Toe Java",
+        move = JOptionPane.showOptionDialog(null, stringBoard() + prompt, "Tic-Tac-Toe Java",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, pos, null);  
        
         if (isValidMove(move)) break; // if the move is valid, we can continue
@@ -203,7 +203,7 @@ public class TicTacToeGameTwoPlayer {
        
     }
    
-    public boolean isWinningCombo(String slot1, String slot2, String slot3) {
+    protected boolean isWinningCombo(String slot1, String slot2, String slot3) {
         // checks if three slots are all X or all O. returns the result
         if (slot1.equals("?"))
             return false;

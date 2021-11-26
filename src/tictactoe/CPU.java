@@ -2,21 +2,18 @@ package tictactoe;
 
 import javax.swing.JOptionPane;
 
-public class CPUMoveGenerator {
+public class CPU {
     private int move;
-    public String[][] board;
     private int turn;
     TicTacToeGameSinglePlayer game;
 
-    public CPUMoveGenerator(TicTacToeGameSinglePlayer game) {
+    public CPU(TicTacToeGameSinglePlayer game) {
         this.game = game;
-        this.board = game.board;
         this.turn = game.turn;
-        getCPUMove();
-
     }
 
     public int getMove() {
+        getCPUMove();
         return move;
     }
 
@@ -32,6 +29,12 @@ public class CPUMoveGenerator {
                       
     }
 
+    private String numberToCoordinates(int number) {
+        int col = number % 3 + 1;
+        int row = number / 3 + 1;
+        return "(" + col + ", " + row + ")";
+    }
+
     private int coordinatesToNumber(int col, int row) {
         // convert the coordinates of a move to a number
         // 0 1 2
@@ -43,6 +46,7 @@ public class CPUMoveGenerator {
 
     private boolean checkPossibleWins(String symbol) {
         // iterate through col
+        String[][] board = game.board; // create an alias for more readable code
         for (int i = 0; i <= 2; i++) {
             if (board[i][0].equals(symbol) && board[i][1].equals(symbol)) 
                 {
@@ -132,7 +136,7 @@ public class CPUMoveGenerator {
         By taking one of these two spaces, the CPU advances closer to a win, forcing the player to block or lose the game
         */
 
-
+        String[][] board = game.board; // create an alias for more readable code
         // iterate throught the colums, and check if one of the columns has two "?" and one "O"
         // if it does, set this.move to the number of the "?"
         for (int i = 0; i <= 2; i++) {
@@ -205,11 +209,11 @@ public class CPUMoveGenerator {
         3. Check if the CPU can advance towards a winning move, then take that move
         4. Pick a random move if all conditions fail
         */
-        System.out.println("Turn: " + turn);
+        String[][] board = game.board; // create an alias for more readable code
+
         if (turn == 1) {
             if (board[1][1].equals("?")) {
                 move = coordinatesToNumber(1, 1);
-                return;
             }
         }
             
@@ -223,7 +227,7 @@ public class CPUMoveGenerator {
             } 
         }
 
-        //  JOptionPane.showMessageDialog(null, this.game.stringBoard() + "\n\n\n\nCPU move: " + move);
+        JOptionPane.showMessageDialog(null, this.game.stringBoard() + "\n\n\n\nCPU answers with the move: " + numberToCoordinates(move));
               
     }
 
@@ -231,7 +235,7 @@ public class CPUMoveGenerator {
         int row = move % 3;
         int col = move / 3;
        
-        if (!board[col][row].equals("X") && !board[col][row].equals("O")) return true;
+        if (!game.board[col][row].equals("X") && !game.board[col][row].equals("O")) return true;
         else return false;
     }
     
