@@ -5,11 +5,13 @@ import javax.swing.JOptionPane;
 public class CPU {
     private int move;
     private int turn;
+    private int difficulty;
     TicTacToeGameSinglePlayer game;
 
-    public CPU(TicTacToeGameSinglePlayer game) {
+    public CPU(TicTacToeGameSinglePlayer game, int difficulty) {
         this.game = game;
         this.turn = game.turn;
+        this.difficulty = difficulty;
     }
 
     public int getMove() {
@@ -200,35 +202,57 @@ public class CPU {
         return false;
     }
 
-    private void getCPUMove() {
-        /*
-        1 (first scenario). If the player's first move is not in the center, take the center This prevents forks.
+    private void getCPUMoveEasy() {
+        getRandomCPUMove();
+    }
 
-        1 (second scenario). Check if the CPU can win in the next move, then take that move
-        2. Check if the player can win in the next move, then block
-        3. Check if the CPU can advance towards a winning move, then take that move
-        4. Pick a random move if all conditions fail
-        */
-        String[][] board = game.board; // create an alias for more readable code
+    private void getCPUMoveMedium() {
+        if (Math.random() < 0.4) getRandomCPUMove();
+        else getCPUMoveImpossible();
+    }
 
-        if (turn == 1) {
-            if (board[1][1].equals("?")) {
-                move = coordinatesToNumber(1, 1);
+    private void getCPUMoveHard() {
+        if (Math.random() < 0.7) getRandomCPUMove();
+        else getCPUMoveImpossible();
+    }
+
+    private void getCPUMoveImpossible() {
+            /*
+            1 (first scenario). If the player's first move is not in the center, take the center This prevents forks.
+
+            1 (second scenario). Check if the CPU can win in the next move, then take that move
+            2. Check if the player can win in the next move, then block
+            3. Check if the CPU can advance towards a winning move, then take that move
+            4. Pick a random move if all conditions fail
+            */
+            String[][] board = game.board; // create an alias for more readable code
+
+            if (turn == 1) {
+                if (board[1][1].equals("?")) {
+                    move = coordinatesToNumber(1, 1);
+                }
             }
-        }
+                
+            else {
+            if (!checkPossibleWins("O")) {
+                    if (!checkPossibleWins("X")) {
+                        if (!checkPossibleAdvancementsTowardWinning()) {
+                            getRandomCPUMove();
+                        } 
+                    }     
+                } 
+            }
+
             
-        else {
-           if (!checkPossibleWins("O")) {
-                if (!checkPossibleWins("X")) {
-                    if (!checkPossibleAdvancementsTowardWinning()) {
-                        getRandomCPUMove();
-                    } 
-                }     
-            } 
-        }
+    }
+
+    private void getCPUMove() {
+        if (difficulty == 0) getCPUMoveEasy();
+        else if (difficulty == 1) getCPUMoveMedium();
+        else if (difficulty == 2) getCPUMoveHard();
+        else getCPUMoveImpossible(); 
 
         JOptionPane.showMessageDialog(null, this.game.stringBoard() + "\n\n\n\nCPU answers with the move: " + numberToCoordinates(move));
-              
     }
 
     private boolean isValidMove(int move) {

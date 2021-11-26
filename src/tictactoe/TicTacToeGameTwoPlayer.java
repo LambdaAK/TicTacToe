@@ -52,6 +52,7 @@ public class TicTacToeGameTwoPlayer {
     protected boolean playerOneWin;
     protected boolean playerTwoWin;
     protected boolean finished;
+    
    
    
     public TicTacToeGameTwoPlayer() {

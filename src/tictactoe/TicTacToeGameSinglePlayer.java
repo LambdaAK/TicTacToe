@@ -6,10 +6,17 @@ import javax.swing.JOptionPane;
  */
 public class TicTacToeGameSinglePlayer extends TicTacToeGameTwoPlayer {
     private CPU cpu;
+    private String difficulty;
 
-    public TicTacToeGameSinglePlayer() {
+    public TicTacToeGameSinglePlayer(int difficulty) {
         super();
-        cpu = new CPU(this); // represents the computer
+        cpu = new CPU(this, difficulty); // represents the computer
+
+        if (difficulty == 0) this.difficulty = "Easy";  
+        else if (difficulty == 1) this.difficulty = "Medium";
+        else if (difficulty == 2) this.difficulty = "Hard";
+        else if (difficulty == 3) this.difficulty = "Impossible";
+        
     }
    
     @Override
@@ -46,7 +53,7 @@ public class TicTacToeGameSinglePlayer extends TicTacToeGameTwoPlayer {
        
        while (true) {
             String prompt = "\n\nEnter your move";
-            move = JOptionPane.showOptionDialog(null, stringBoard() + prompt, "Tic-Tac-Toe Java",
+            move = JOptionPane.showOptionDialog(null, "Difficulty: " + difficulty + "\n\n" + stringBoard() + prompt, "Tic-Tac-Toe Java",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, pos, null);  
        
             if (isValidMove(move)) break; // if the move is valid, we can continue

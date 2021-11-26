@@ -5,17 +5,25 @@ import javax.swing.JOptionPane;
 public class TicTacToeMenu {
  
     public void play() {
-        Object[] options = {"Single Player", "Two Player", "Quit"};
+        Object[] options1 = {"Single Player", "Two Player", "Quit"};
+        Object[] options2 = {"Easy", "Medium", "Hard", "Impossible", "Menu"};
 
         while (true) {
             int choice = JOptionPane.showOptionDialog(null, "Tic Tac Toe\n\n"
                     + "Select Gamemode", "Tic Tac Toe",
                     JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-                    null, options, options[0]);
+                    null, options1, options1[0]);
                     
             if (choice == 0) {
-                TicTacToeGameSinglePlayer game = new TicTacToeGameSinglePlayer();
-                game.play();
+                int difficulty = JOptionPane.showOptionDialog(null, "Tic Tac Toe\n\n"
+                    + "Select Difficulty", "Tic Tac Toe",
+                    JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                    null, options2, options2[0]);
+                
+                if (difficulty != 4) {
+                    TicTacToeGameSinglePlayer game = new TicTacToeGameSinglePlayer(difficulty);
+                    game.play();
+                }
             } 
 
             else if (choice == 1) {
