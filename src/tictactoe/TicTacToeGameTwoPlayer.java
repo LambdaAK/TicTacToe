@@ -45,19 +45,17 @@ xxx
  */
 public class TicTacToeGameTwoPlayer {
    
-    protected String[][] board = {{"?", "?", "?"}, {"?", "?", "?"}, {"?", "?", "?"}};
-    protected JOptionPane pane;
-    protected int turn;
-    protected int move;
-    protected boolean playerOneWin;
-    protected boolean playerTwoWin;
-    protected boolean finished;
+    public String[][] board = {{"?", "?", "?"}, {"?", "?", "?"}, {"?", "?", "?"}};
+    public int turn;
+    public int move;
+    public boolean playerOneWin;
+    public boolean playerTwoWin;
+    public boolean finished;
     
    
    
     public TicTacToeGameTwoPlayer() {
         turn = 0;
-        pane = new JOptionPane();
         playerOneWin = false;
         playerTwoWin = false;
         finished = false;
@@ -153,7 +151,7 @@ public class TicTacToeGameTwoPlayer {
        
     }
    
-    protected void update() {
+    public void update() {
         // adds the player's move to board
         int row = move / 3;
         int col = move % 3;
@@ -165,7 +163,7 @@ public class TicTacToeGameTwoPlayer {
         board[row][col] = player;
     }
    
-    protected String stringBoard() {
+    public String stringBoard() {
         String boardStr = "   1 2 3\n";
         for (int i = 0; i < board.length; i++) {
             boardStr += i + 1 + " ";
@@ -178,7 +176,7 @@ public class TicTacToeGameTwoPlayer {
         return boardStr;
     }
    
-    protected boolean isValidMove(int move) {
+    public boolean isValidMove(int move) {
         int row = move % 3;
         int col = move / 3;
        
@@ -204,7 +202,7 @@ public class TicTacToeGameTwoPlayer {
        
     }
    
-    protected boolean isWinningCombo(String slot1, String slot2, String slot3) {
+    public boolean isWinningCombo(String slot1, String slot2, String slot3) {
         // checks if three slots are all X or all O. returns the result
         if (slot1.equals("?"))
             return false;

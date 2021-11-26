@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 public class TicTacToeGameSinglePlayer extends TicTacToeGameTwoPlayer {
     private CPU cpu;
     private String difficulty;
+    
 
     public TicTacToeGameSinglePlayer(int difficulty) {
         super();
@@ -15,8 +16,7 @@ public class TicTacToeGameSinglePlayer extends TicTacToeGameTwoPlayer {
         if (difficulty == 0) this.difficulty = "Easy";  
         else if (difficulty == 1) this.difficulty = "Medium";
         else if (difficulty == 2) this.difficulty = "Hard";
-        else if (difficulty == 3) this.difficulty = "Impossible";
-        
+        else if (difficulty == 3) this.difficulty = "Impossible";  
     }
    
     @Override
@@ -26,6 +26,7 @@ public class TicTacToeGameSinglePlayer extends TicTacToeGameTwoPlayer {
             update();
 
             checkWin(); // only start checking after turn 3 (represented by int turn = 2)
+            System.out.println("Turn: " + turn);
             turn++;
             if (finished) break;
             ///////////////////////////////////////////
@@ -33,6 +34,7 @@ public class TicTacToeGameSinglePlayer extends TicTacToeGameTwoPlayer {
             update();
             checkWin(); // only start checking after turn 3 (represented by int turn = 2)
             turn++;
+            System.out.println("Turn: " + turn);
             if (finished) break; 
 
         }

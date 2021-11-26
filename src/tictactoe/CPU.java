@@ -30,8 +30,8 @@ public class CPU {
     }
 
     private String numberToCoordinates(int number) {
-        int col = number % 3 + 1;
-        int row = number / 3 + 1;
+        int col = number / 3 + 1;
+        int row = number % 3 + 1;
         return "(" + col + ", " + row + ")";
     }
 

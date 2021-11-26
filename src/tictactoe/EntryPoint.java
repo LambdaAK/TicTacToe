@@ -10,7 +10,6 @@ public class EntryPoint {
         UIManager.put("OptionPane.background", Color.LIGHT_GRAY);
         UIManager.put("Button.background", Color.LIGHT_GRAY);
         TicTacToeMenu menu = new TicTacToeMenu();
-        menu.play();
-        
+        menu.play();  
     }
 }
