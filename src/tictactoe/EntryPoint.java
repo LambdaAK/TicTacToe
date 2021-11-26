@@ -5,10 +5,10 @@ import java.awt.Color;
 
 public class EntryPoint {
     public static void main(String[] args) {
-		UIManager.put("OptionPane.messageForeground", Color.GREEN);
-		UIManager.put("Panel.background", Color.decode("222222"));
-        UIManager.put("OptionPane.background", Color.decode("222222"));
-        UIManager.put("Button.background", Color.GREEN);
+		UIManager.put("OptionPane.messageForeground", Color.decode("3229"));
+		UIManager.put("Panel.background", Color.LIGHT_GRAY);
+        UIManager.put("OptionPane.background", Color.LIGHT_GRAY);
+        UIManager.put("Button.background", Color.LIGHT_GRAY);
         TicTacToeMenu menu = new TicTacToeMenu();
         menu.play();
         
