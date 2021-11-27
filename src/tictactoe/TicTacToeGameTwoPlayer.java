@@ -164,11 +164,11 @@ public class TicTacToeGameTwoPlayer {
     }
    
     public String stringBoard() {
-        String boardStr = "   1 2 3\n";
+        String boardStr = "    1    2    3\n";
         for (int i = 0; i < board.length; i++) {
             boardStr += i + 1 + " ";
             for (int j = 0; j < board.length; j++) {
-                boardStr += board[i][j] + " ";
+                boardStr += "(" + board[i][j] + ") ";
             }
             boardStr += "\n";
         }
