@@ -134,6 +134,10 @@ public class CPU {
         1. There is an "O"
         2. The other two spaces are "?"
         By taking one of these two spaces, the CPU advances closer to a win, forcing the player to block or lose the game
+
+        ** If the line is a diagonal line and the middle space is "O", and the other two spaces are "?", at least one of the 
+        available slots will have adjacent edges that are ?. The CPU must take one that has a ? on one of the edges, or else
+        a fork can be created by X on the following moves
         */
 
         String[][] board = game.board; // create an alias for more readable code
@@ -173,6 +177,10 @@ public class CPU {
         // check the first diagonal
         if (board[0][0].equals("?") && board[1][1].equals("O") && board[2][2].equals("?")) {
             move = coordinatesToNumber(0, 0);
+            // check if any of the adjacent piece are "?"
+            if (board[0][1].equals("?") || board[1][0].equals("?")) 
+                move = coordinatesToNumber(0, 0);
+            else move = coordinatesToNumber(2, 2);
             return true;
         }
         if (board[0][0].equals("O") && board[1][1].equals("?") && board[2][2].equals("?")) {
@@ -183,9 +191,14 @@ public class CPU {
             move = coordinatesToNumber(1, 1);
             return true;
         }
+        //////////////////////////////////////////////////////////////
         // check the second diagonal
         if (board[0][2].equals("?") && board[1][1].equals("O") && board[2][0].equals("?")) {
             move = coordinatesToNumber(0, 2);
+            // check if the two edges near 0 2 are "?"
+            if (board[0][1].equals("?") || board[1][2].equals("?")) 
+                move = coordinatesToNumber(0, 2);
+            else move = coordinatesToNumber(2, 0);
             return true;
         }
         if (board[0][2].equals("O") && board[1][1].equals("?") && board[2][0].equals("?")) {
